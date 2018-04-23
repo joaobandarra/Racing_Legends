@@ -1,26 +1,28 @@
-﻿document.addEventListener('DOMContentLoaded', function main() {
-    var xhr = new XMLHttpRequest();
-    /**
-     * @type {Element}
-     */
-    var racingLegends = null;
+﻿function apresenta() {
+    exemploFetch();
+}
+/**
+ * Mostra pilotos no ecrã.
+ *
+ * @param {Array<{ name: string, id: string, nickname: string? }>} arrayDePilotos
+ */
+function mostraPilotos(arrayDePilotos) {
+    // `arrayDePilotos` é um Array. A função `forEach` do Array
+    // é uma alternativa ao ciclo `for`.
+    // A função que é passada por parâmetro é invocada para
+    // cada item do array.
+    arrayDePilotos.forEach(function (piloto) {
 
-    xhr.open('GET', '/Racing_Legends/Index.html');
+        var lblNome = document.createElement("p");
+        lblNome.textContent = piloto.name;
+        document.body.appendChild(lblNome);
 
-    xhr.onload = function (_) {
-        if (xhr.status === 200) {
-            racingLegends = xhr.responseXML;
-            init();
+        /*var lblId = document.createElement("p");
+        lblId.textContent = piloto.id;
+        document.body.appendChild(lblId);
 
-        } else {
-            console.error('Erro', xhr.status);
-        }
-    };
-
-    xhr.onerror = function (_) {
-        console.error('Erro');
-    };
-
-    xhr.send();
-
-    function init() { }
+        var lblNacionalidade = document.createElement("p");
+        lblNacionalidade.textContent = piloto.nationality;
+        document.body.appendChild(lblNacionalidade);*/
+    });
+}
