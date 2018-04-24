@@ -1,28 +1,62 @@
 ﻿function apresenta() {
-    exemploFetch();
+    categoriaFetch();
 }
+
+/**
+ * Mostra categorias no ecrã.
+ *
+ * @param {Array<{ name: string, id: string, description: string}>} arrayDeCategorias
+ */
+function mostraCategorias(arrayDeCategorias) {
+
+    arrayDeCategorias.forEach(function (categorias) {
+
+        var lblNome = document.createElement("p");
+        lblNome.textContent = "Nome: " + categorias.name;
+        document.body.appendChild(lblNome);
+
+        var lblDescricao = document.createElement("p");
+        lblDescricao.textContent = "Descrição: " + categorias.description;
+        document.body.appendChild(lblDescricao);
+
+        /*var lblId = document.createElement("p");
+        lblId.textContent = "Id: " + categorias.id;
+        document.body.appendChild(lblId);*/
+
+        var lblImg = document.createElement("img");
+        lblImg.src = imagemFetch(categorias.id);
+        document.body.appendChild(lblImg);
+
+        
+    });
+}
+
+
+
+
+
+
 /**
  * Mostra pilotos no ecrã.
  *
- * @param {Array<{ name: string, id: string, nickname: string? }>} arrayDePilotos
+ * @param {Array<{ name: string, id: string, nickname: string?}>} arrayDePilotos
  */
 function mostraPilotos(arrayDePilotos) {
-    // `arrayDePilotos` é um Array. A função `forEach` do Array
-    // é uma alternativa ao ciclo `for`.
-    // A função que é passada por parâmetro é invocada para
-    // cada item do array.
+
     arrayDePilotos.forEach(function (piloto) {
 
         var lblNome = document.createElement("p");
         lblNome.textContent = piloto.name;
         document.body.appendChild(lblNome);
 
-        /*var lblId = document.createElement("p");
-        lblId.textContent = piloto.id;
-        document.body.appendChild(lblId);
-
-        var lblNacionalidade = document.createElement("p");
-        lblNacionalidade.textContent = piloto.nationality;
-        document.body.appendChild(lblNacionalidade);*/
+        var lblAlcunha = document.createElement("p");
+        lblAlcunha.textContent = piloto.name;
+        document.body.appendChild(lblAlcunha);
     });
 }
+
+
+
+
+
+
