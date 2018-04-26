@@ -1,5 +1,6 @@
 ﻿function apresenta() {
-    categoriaFetch();
+    //categoriaFetch();
+    pilotoCategoriaFetch('rally');
 }
 
 /**
@@ -19,12 +20,8 @@ function mostraCategorias(arrayDeCategorias) {
         lblDescricao.textContent = "Descrição: " + categorias.description;
         document.body.appendChild(lblDescricao);
 
-        /*var lblId = document.createElement("p");
-        lblId.textContent = "Id: " + categorias.id;
-        document.body.appendChild(lblId);*/
-
         var lblImg = document.createElement("img");
-        lblImg.src = imagemFetch(categorias.id);
+        lblImg.src = apresentaImagem(categorias.id);
         document.body.appendChild(lblImg);
 
         
@@ -32,26 +29,31 @@ function mostraCategorias(arrayDeCategorias) {
 }
 
 
-
-
-
-
 /**
  * Mostra pilotos no ecrã.
  *
- * @param {Array<{ name: string, id: string, nickname: string?}>} arrayDePilotos
+ * @param {Array<{ name: string, id: string, nickname: string?, nationality: string}>} arrayDePilotos
  */
 function mostraPilotos(arrayDePilotos) {
 
-    arrayDePilotos.forEach(function (piloto) {
+    arrayDePilotos.forEach(function (pilotos) {
 
         var lblNome = document.createElement("p");
-        lblNome.textContent = piloto.name;
+        lblNome.textContent = "Nome: "+ pilotos.name;
         document.body.appendChild(lblNome);
 
         var lblAlcunha = document.createElement("p");
-        lblAlcunha.textContent = piloto.name;
+        lblAlcunha.textContent = "Alcunha: "+ pilotos.nickname;
         document.body.appendChild(lblAlcunha);
+
+        var lblNacionalidade = document.createElement("p");
+        lblNacionalidade.textContent = "Navionalidade: " + pilotos.nationality;
+        document.body.appendChild(lblNacionalidade);
+
+        var lblImg = document.createElement("img");
+        lblImg.src = imagemPiloto(pilotos.id);
+        document.body.appendChild(lblImg);
+       
     });
 }
 
